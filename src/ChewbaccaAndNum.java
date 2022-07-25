@@ -1,15 +1,49 @@
-import java.util.*;
 import java.io.*;
+import java.util.StringTokenizer;
 
-public class Template{
+public class ChewbaccaAndNum {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            int testCases=in.nextInt();
-            while(testCases-- > 0){
-                // write code here
+            long num = in.nextLong();
+            long m = num;
+            int count = 0;
+            while (m > 0) {
+                count++;
+                m /= 10;
             }
+
+            int count1 = 0;
+            long[] arr = new long[count];
+
+            for (int i = count - 1; i >= 0; i--) {
+                arr[i] = num % 10;
+                num /= 10;
+            }
+
+            for (int i = 0; i < count; i++) {
+
+                if (9 - arr[i] < arr[i]){
+                    if(arr[i] == 9 && i== 0) {
+                        arr[i] = 9;
+                    }else {
+                        arr[i] = 9 - arr[i];
+                    }
+                }
+            }
+
+            for(int i = 0; i < count; i++) {
+                if(arr[i] == 0)
+                    count1++;
+                else
+                    break;
+            }
+
+            for (int i = count1; i < count; i++) {
+                out.print(arr[i]);
+            }
+
             out.close();
         } catch (Exception e) {
             return;

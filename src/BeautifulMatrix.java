@@ -1,15 +1,21 @@
-import java.util.*;
 import java.io.*;
+import java.util.StringTokenizer;
 
-public class Template{
+public class BeautifulMatrix {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            int testCases=in.nextInt();
-            while(testCases-- > 0){
-                // write code here
+            int j = 1;
+            int i = 1;
+            for (i = 1; i <= 5; i++){
+                if(in.nextInt() == 1) break;
+                if (i == 5) {
+                    j++;
+                    i = 0;
+                }
             }
+            out.print(Math.abs(i-3)+Math.abs(j-3));
             out.close();
         } catch (Exception e) {
             return;
