@@ -1,50 +1,48 @@
-//514/problem/A
+//1352A
 import java.io.*;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class ChewbaccaAndNum {
+public class SumOfRoundNumbers {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            long num = in.nextLong();
-            long m = num;
-            int count = 0;
-            while (m > 0) {
-                count++;
-                m /= 10;
-            }
-
-            int count1 = 0;
-            long[] arr = new long[count];
-
-            for (int i = count - 1; i >= 0; i--) {
-                arr[i] = num % 10;
-                num /= 10;
-            }
-
-            for (int i = 0; i < count; i++) {
-
-                if (9 - arr[i] < arr[i]){
-                    if(arr[i] == 9 && i== 0) {
-                        arr[i] = 9;
-                    }else {
-                        arr[i] = 9 - arr[i];
-                    }
+            int [] arr = new int[10000];
+            int testCases=in.nextInt();
+            while(testCases-- > 0){
+                int n = in.nextInt();
+                int d=0,rem=0;
+                if (n >= 1000){
+                    rem = n%1000;
+                    arr[d++] = n-rem;
+                    n = n%1000;
                 }
-            }
+                if(n >= 100){
+                    rem = n%100;
+                    arr[d++] = n-rem;
+                    n = n%100;
+                }
+                if(n >= 10){
+                    rem = n%10;
+                    arr[d++] = n-rem;
+                    n = n%10;
+                }
+                if(n<10 && n>0){
+                    arr[d++] = n;
+                }
+                ArrayList<Integer> ans = new ArrayList<Integer>();
+                for (int i = 0; i<d; i++){
+                    ans.add(arr[i]);
+                }
+                out.println(ans.size());
+                for (int i = 0; i< ans.size(); i++){
+                    out.print(ans.get(i)+ " ");
 
-            for(int i = 0; i < count; i++) {
-                if(arr[i] == 0)
-                    count1++;
-                else
-                    break;
-            }
+                }
+                out.print("\r\n");
 
-            for (int i = count1; i < count; i++) {
-                out.print(arr[i]);
             }
-
             out.close();
         } catch (Exception e) {
             return;

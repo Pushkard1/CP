@@ -1,50 +1,36 @@
-//514/problem/A
+//723A
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class ChewbaccaAndNum {
+public class MeetingFriends {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            long num = in.nextLong();
-            long m = num;
-            int count = 0;
-            while (m > 0) {
-                count++;
-                m /= 10;
-            }
-
-            int count1 = 0;
-            long[] arr = new long[count];
-
-            for (int i = count - 1; i >= 0; i--) {
-                arr[i] = num % 10;
-                num /= 10;
-            }
-
-            for (int i = 0; i < count; i++) {
-
-                if (9 - arr[i] < arr[i]){
-                    if(arr[i] == 9 && i== 0) {
-                        arr[i] = 9;
-                    }else {
-                        arr[i] = 9 - arr[i];
-                    }
-                }
-            }
-
-            for(int i = 0; i < count; i++) {
-                if(arr[i] == 0)
-                    count1++;
+            int x1 = in.nextInt();
+            int x2 = in.nextInt();
+            int x3 = in.nextInt();
+            int mid = 0;
+            if (x1 > x2)
+            {
+                if (x2 > x3)
+                    mid = x2;
+                else if (x1 > x3)
+                    mid = x3;
                 else
-                    break;
+                    mid = x1;
             }
-
-            for (int i = count1; i < count; i++) {
-                out.print(arr[i]);
+            else
+            {
+                if (x1 > x3)
+                    mid =  x1;
+                else if (x2 > x3)
+                    mid = x3;
+                else
+                    mid = x2;
             }
-
+            int travel = Math.abs(x1-mid) + Math.abs(x2-mid) + Math.abs(x3-mid);
+            out.println(travel);
             out.close();
         } catch (Exception e) {
             return;

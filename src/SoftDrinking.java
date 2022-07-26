@@ -1,50 +1,24 @@
-//514/problem/A
+//151A
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class ChewbaccaAndNum {
+public class SoftDrinking {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            long num = in.nextLong();
-            long m = num;
-            int count = 0;
-            while (m > 0) {
-                count++;
-                m /= 10;
-            }
+            int n = in.nextInt(); //friends
+            int k = in.nextInt(); //bottles
+            int l = in.nextInt(); // ml of drinks
+            int c = in.nextInt(); // limes
+            int d = in.nextInt(); // slices/lime
+            int p = in.nextInt(); // gm of salt
+            int nl = in.nextInt(); // ml of drink for toast
+            int np = in.nextInt(); // gm od salt for toast
 
-            int count1 = 0;
-            long[] arr = new long[count];
+            int toast = Math.min(k*l/nl,Math.min(c*d,p/np))/n;
 
-            for (int i = count - 1; i >= 0; i--) {
-                arr[i] = num % 10;
-                num /= 10;
-            }
-
-            for (int i = 0; i < count; i++) {
-
-                if (9 - arr[i] < arr[i]){
-                    if(arr[i] == 9 && i== 0) {
-                        arr[i] = 9;
-                    }else {
-                        arr[i] = 9 - arr[i];
-                    }
-                }
-            }
-
-            for(int i = 0; i < count; i++) {
-                if(arr[i] == 0)
-                    count1++;
-                else
-                    break;
-            }
-
-            for (int i = count1; i < count; i++) {
-                out.print(arr[i]);
-            }
-
+            out.println(toast);
             out.close();
         } catch (Exception e) {
             return;
