@@ -1,41 +1,47 @@
-//510A
+package Constructive;//1352A
 import java.io.*;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class FoxAndSnake {
+public class SumOfRoundNumbers {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            int row = in.nextInt();
-            int col = in.nextInt();
-            int flag = 0;
-            for (int i=0; i<row; i++){
-                for (int j=0; j<col; j++){
-                    if(i%2 == 0){
-                        out.print("#");
-                    }
-                    else if (i%2 == 1 && flag == 0 ){
-                        if (j<col-1) {
-                            out.print(".");
-                        }else {
-                            flag = 1;
-                            out.print("#");
-                        }
-                    }
-                    else if (i%2 == 1 && flag == 1){
-                        if (j==0) {
-                            out.print("#");
-                        }
-                        else {
-                            out.print(".");
-                        }
-                        if (j==col-1){
-                            flag = 0;
-                        }
-                    }
+            int [] arr = new int[10000];
+            int testCases=in.nextInt();
+            while(testCases-- > 0){
+                int n = in.nextInt();
+                int d=0,rem=0;
+                if (n >= 1000){
+                    rem = n%1000;
+                    arr[d++] = n-rem;
+                    n = n%1000;
                 }
-                out.println("");
+                if(n >= 100){
+                    rem = n%100;
+                    arr[d++] = n-rem;
+                    n = n%100;
+                }
+                if(n >= 10){
+                    rem = n%10;
+                    arr[d++] = n-rem;
+                    n = n%10;
+                }
+                if(n<10 && n>0){
+                    arr[d++] = n;
+                }
+                ArrayList<Integer> ans = new ArrayList<Integer>();
+                for (int i = 0; i<d; i++){
+                    ans.add(arr[i]);
+                }
+                out.println(ans.size());
+                for (int i = 0; i< ans.size(); i++){
+                    out.print(ans.get(i)+ " ");
+
+                }
+                out.print("\r\n");
+
             }
             out.close();
         } catch (Exception e) {

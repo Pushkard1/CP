@@ -1,22 +1,42 @@
-//263A
+package Constructive;//510A
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class BeautifulMatrix {
+public class FoxAndSnake {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            int j = 1;
-            int i = 1;
-            for (i = 1; i <= 5; i++){
-                if(in.nextInt() == 1) break;
-                if (i == 5) {
-                    j++;
-                    i = 0;
+            int row = in.nextInt();
+            int col = in.nextInt();
+            int flag = 0;
+            for (int i=0; i<row; i++){
+                for (int j=0; j<col; j++){
+                    if(i%2 == 0){
+                        out.print("#");
+                    }
+                    else if (i%2 == 1 && flag == 0 ){
+                        if (j<col-1) {
+                            out.print(".");
+                        }else {
+                            flag = 1;
+                            out.print("#");
+                        }
+                    }
+                    else if (i%2 == 1 && flag == 1){
+                        if (j==0) {
+                            out.print("#");
+                        }
+                        else {
+                            out.print(".");
+                        }
+                        if (j==col-1){
+                            flag = 0;
+                        }
+                    }
                 }
+                out.println("");
             }
-            out.print(Math.abs(i-3)+Math.abs(j-3));
             out.close();
         } catch (Exception e) {
             return;

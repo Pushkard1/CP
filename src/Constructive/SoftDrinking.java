@@ -1,48 +1,24 @@
-//1352A
+package Constructive;//151A
 import java.io.*;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class SumOfRoundNumbers {
+public class SoftDrinking {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            int [] arr = new int[10000];
-            int testCases=in.nextInt();
-            while(testCases-- > 0){
-                int n = in.nextInt();
-                int d=0,rem=0;
-                if (n >= 1000){
-                    rem = n%1000;
-                    arr[d++] = n-rem;
-                    n = n%1000;
-                }
-                if(n >= 100){
-                    rem = n%100;
-                    arr[d++] = n-rem;
-                    n = n%100;
-                }
-                if(n >= 10){
-                    rem = n%10;
-                    arr[d++] = n-rem;
-                    n = n%10;
-                }
-                if(n<10 && n>0){
-                    arr[d++] = n;
-                }
-                ArrayList<Integer> ans = new ArrayList<Integer>();
-                for (int i = 0; i<d; i++){
-                    ans.add(arr[i]);
-                }
-                out.println(ans.size());
-                for (int i = 0; i< ans.size(); i++){
-                    out.print(ans.get(i)+ " ");
+            int n = in.nextInt(); //friends
+            int k = in.nextInt(); //bottles
+            int l = in.nextInt(); // ml of drinks
+            int c = in.nextInt(); // limes
+            int d = in.nextInt(); // slices/lime
+            int p = in.nextInt(); // gm of salt
+            int nl = in.nextInt(); // ml of drink for toast
+            int np = in.nextInt(); // gm od salt for toast
 
-                }
-                out.print("\r\n");
+            int toast = Math.min(k*l/nl,Math.min(c*d,p/np))/n;
 
-            }
+            out.println(toast);
             out.close();
         } catch (Exception e) {
             return;

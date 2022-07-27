@@ -1,24 +1,22 @@
-//151A
+package Constructive;//263A
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class SoftDrinking {
+public class BeautifulMatrix {
     public static void main(String[] args) {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            int n = in.nextInt(); //friends
-            int k = in.nextInt(); //bottles
-            int l = in.nextInt(); // ml of drinks
-            int c = in.nextInt(); // limes
-            int d = in.nextInt(); // slices/lime
-            int p = in.nextInt(); // gm of salt
-            int nl = in.nextInt(); // ml of drink for toast
-            int np = in.nextInt(); // gm od salt for toast
-
-            int toast = Math.min(k*l/nl,Math.min(c*d,p/np))/n;
-
-            out.println(toast);
+            int j = 1;
+            int i = 1;
+            for (i = 1; i <= 5; i++){
+                if(in.nextInt() == 1) break;
+                if (i == 5) {
+                    j++;
+                    i = 0;
+                }
+            }
+            out.print(Math.abs(i-3)+Math.abs(j-3));
             out.close();
         } catch (Exception e) {
             return;
