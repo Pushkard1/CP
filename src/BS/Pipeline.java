@@ -10,8 +10,16 @@ public class Pipeline {
             FastWriter out = new FastWriter();
             long n=in.nextLong();
             long k=in.nextLong();
-            if (n == 1) out.println("0");
-            if (n == k) out.println("1");
+            if (n == 1) {
+                out.println(0);
+                out.close();
+                return;
+            }
+            if (n == k) {
+                out.println(1);
+                out.close();
+                return;
+            }
             long l = 2, r = k, ans = -1, OutOfRange=k*(k+1)/2;
             OutOfRange-=k;
             while (l <= r){
