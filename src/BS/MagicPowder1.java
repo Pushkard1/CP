@@ -1,4 +1,5 @@
 //670D1
+//https://codeforces.com/contest/670/problem/D1
 package BS;
 
 import java.io.*;
@@ -12,15 +13,15 @@ public class MagicPowder1 {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
 
-            n = in.nextInt();
-            k = in.nextInt();
+            n = in.nextInt(); // number of ingredients
+            k = in.nextInt(); // number of magic powder
             ing = new int [n];
             has = new int [n];
             for (int i=0; i<n; i++){
-                ing[i] = in.nextInt();
+                ing[i] = in.nextInt(); // number of grams of the i-th ingredient, needed to bake one cookie
             }
             for (int i=0; i<n; i++){
-                has[i] = in.nextInt();
+                has[i] = in.nextInt(); // number of grams of the i-th ingredient, which Apollinaria has
             }
             int low, high, mid, z, ans = 0;
             low =0 ;

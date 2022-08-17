@@ -1,3 +1,5 @@
+//287B
+//https://codeforces.com/contest/287/problem/B
 package BS;
 
 import java.io.*;
@@ -8,8 +10,8 @@ public class Pipeline {
         try {
             FastReader in=new FastReader();
             FastWriter out = new FastWriter();
-            long n=in.nextLong();
-            long k=in.nextLong();
+            long n=in.nextLong(); // output flow pipes
+            long k=in.nextLong(); // available splitters till k outputs
             if (n == 1) {
                 out.println(0);
                 out.close();

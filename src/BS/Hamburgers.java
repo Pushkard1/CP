@@ -1,4 +1,5 @@
 //371C
+//https://codeforces.com/contest/371/problem/C
 package BS;
 
 import java.io.*;
@@ -7,9 +8,9 @@ import java.util.StringTokenizer;
 import static java.lang.Math.max;
 
 public class Hamburgers {
-    static long nb, ns, nc;
-    static long pb, ps, pc;
-    static long r;
+    static long nb, ns, nc; // number of the pieces of bread, sausage and cheese on Polycarpus' kitchen
+    static long pb, ps, pc; // price of one piece of bread, sausage and cheese in the shop
+    static long r; // number of rubles Polycarpus has
 
     static long b=0,s=0,c=0;
     public static void main(String[] args) {
@@ -42,7 +43,6 @@ public class Hamburgers {
                 mid = (low+high)/2;
                 z = price(mid);
                 if (z==r){
-                    //out.println(mid);
                     ans = mid;
                     break;
                 }
